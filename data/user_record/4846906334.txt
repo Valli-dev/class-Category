@@ -1,0 +1,3 @@
+Seyi,Onifade,500,password,seyi@gmail.com
+
+['Seyi', 'Onifade', '400', 'password', 'seyi@gmail.com\n']

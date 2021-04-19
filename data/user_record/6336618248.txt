@@ -1,0 +1,3 @@
+Mike,lucas,10000,password,mike@gmial.com
+['Mike', 'lucas', '9000', 'password', 'mike@gmial.com']
+['Mike', 'lucas', '11000', 'password', 'mike@gmial.com\n']
