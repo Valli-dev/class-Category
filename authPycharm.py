@@ -109,23 +109,23 @@ def bankOperation(acNumber, user):
 
             amount= input("Enter the amount to withdraw:\n")
 
-            newbalance = database.withdraw(acNumber, amount)
+            newbalance = database.withdraw(acNumber, amount, user)
 
 
-            '''session_logout = database.auth_session_logout(acNumber)
+            session_logout = database.auth_session_logout(acNumber)
             if session_logout:
-                print("Logging OUT of your account!\n") '''
+                print("Logging OUT of your account!\n")
 
 
 
         elif (selectedOption == 2):
 
             amount = input("Enter the amount to deposit:\n")
-            x=database.deposit(acNumber, amount)
+            x=database.deposit(acNumber, amount,user)
 
-            '''session_logout = database.auth_session_logout(acNumber)
+            session_logout = database.auth_session_logout(acNumber)
             if session_logout:
-                print("Logging OUT of your account!\n")'''
+                print("Logging OUT of your account!\n")
 
 
 

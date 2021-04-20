@@ -92,7 +92,9 @@ def auth_session_logout(accountNumberFromUser):
     return deleteflag
 
 
-def withdraw(acNumber,amount):
+def withdraw(acNumber,amount, user):
+
+    print(user)
     all_users = os.listdir(user_database_path)
     try:
         last_line = getbalance(acNumber)
@@ -116,7 +118,7 @@ def withdraw(acNumber,amount):
         print("file not found")
 
     except ValueError:
-        print("cant add str with int")
+        print('cant add str with int')
 
     else:
 
@@ -128,8 +130,10 @@ def withdraw(acNumber,amount):
                 print("can't update file")
 
             else:
-                #f.write("\n")
-                f.write(update)
+                f.write("\n")
+                #firstName + "," + lastName + "," + balance + "," + password + "," + email
+                updated_list = user[0]+ "," + user[1] + "," + str(newbal) + "," + user[3] + "," + user[4]
+                f.write(updated_list)
                 print("File Updated")
 
 
@@ -140,7 +144,7 @@ def withdraw(acNumber,amount):
     return True
 
 
-def deposit(acNumber,amount):
+def deposit(acNumber,amount,user):
 
     all_users = os.listdir(user_database_path)
     try:
@@ -174,7 +178,8 @@ def deposit(acNumber,amount):
 
             else:
                 f.write("\n")
-                f.write(update)
+                updated_list = user[0] + "," + user[1] + "," + str(newbal) + "," + user[3] + "," + user[4]
+                f.write(updated_list)
                 print("File Updated")
 
 
