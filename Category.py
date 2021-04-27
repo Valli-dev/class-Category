@@ -9,38 +9,31 @@ class Category:
     def deposit(self,amount):
         self.amount += amount
         print("your have successfully deposited {} in {} category".format(amount, self.category))
-        self.check_balance()
+        print("current balance" ,self.amount)
         return
 
-    def check_balance(self):
-        print ("Current balance : {} in {} category".format(self.amount, self.category))
-        return True
+    def check_balance(self,amount):
+        if amount > self.amount:
+            return False
+        else:
+            return True
 
     def withdraw(self, amount):
-
-        if (amount > self.check_balance()):
+        if self.check_balance(amount):
             self.amount -= amount
             print("Balance after withdrawal= {}".format(self.amount) )
         else:
             print("can't withdraw: low balance")
         return
 
-    def transfer(self, amount, obj):
-    
-        if self.amount > 100:
-            print("car expense must be less than 100")
-            x=self.amount -100
-            self.amount=self.amount-100
-            obj.amount += x
-            print("current balance at carexpense :", self.amount)
-            print("New balance at {} : {} ".format(obj.category, obj.amount))
-            print("Amount transferred successfully from {} object to {} object".format(self.category, obj.category))
-            
-        elif self.amount < 90:
-            self.amount += 10
-            print("carexpense_category amount updated ")
-            return
-
+    def transfer(self, amount, category):
+        if self.check_balance(amount):
+            self.amount -= amount
+            category.amount += amount
+            print("Amount transferred successfully from {} object to {} object".format(self.category, category.category))
+            print("New balance", category.amount)
+        else:
+            print("Amount can't be transfered")
 
     def publish_categories(self):
         print( self.category,"\t\t" , "\t\t\t",self.amount)
@@ -62,12 +55,15 @@ carexpense_category.publish_categories()
 education_category =Category("Education", 250)
 education_category.publish_categories()
 print("************* Deposit operation***********")
-d= int(input("How much do you want to deposit to clothing category?\n"))
-clothing_category.deposit(d)
+amount= int(input("How much do you want to deposit to clothing category?\n"))
+clothing_category.deposit(amount)
 print("************* Withdraw operation***********")
 w= int(input("How much do you want to withdraw from food category?\n"))
 food_category.withdraw(w)
 
 print("**************transfer operation between objects***************")
-carexpense_category.transfer(carexpense_category,education_category)
+carexpense_category.transfer(50,education_category)
+
+
+
 
