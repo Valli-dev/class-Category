@@ -25,9 +25,21 @@ class Category:
             print("can't withdraw: low balance")
         return
 
-    def transfer(self, amount, x):
-        x.amount += amount
-        print("Amount transfered successfully from {} to {}".format(self.category, x.category))
+    def transfer(self, amount, obj):
+    
+        if self.amount > 100:
+            print("car expense must be less than 100")
+            x=self.amount -100
+            self.amount=self.amount-100
+            obj.amount += x
+            print("current balance at carexpense :", self.amount)
+            print("New balance at {} : {} ".format(obj.category, obj.amount))
+            print("Amount transferred successfully from {} object to {} object".format(self.category, obj.category))
+            
+        elif self.amount < 90:
+            self.amount += 10
+            print("carexpense_category amount updated ")
+            return
 
 
     def publish_categories(self):
@@ -38,31 +50,24 @@ print("AVAILABLE CATEGORIES AND THEIR BALANCES:\n")
 
 #*********Object Instantiation***************#
 
-clothing_category = Category("clothing", 1000)
+clothing_category = Category("clothing", 100)
 
 clothing_category.publish_categories()
-food_category = Category("food", 2000)
+food_category = Category("food", 200)
 food_category.publish_categories()
-entertainment_category = Category("Entertainment", 500)
+entertainment_category = Category("Entertainment", 50)
 entertainment_category.publish_categories()
-carexpense_category = Category("CarExpenses", 1500)
+carexpense_category = Category("CarExpenses", 150)
 carexpense_category.publish_categories()
-education_category =Category("Education", 2500)
+education_category =Category("Education", 250)
 education_category.publish_categories()
 print("************* Deposit operation***********")
 d= int(input("How much do you want to deposit to clothing category?\n"))
 clothing_category.deposit(d)
-
+print("************* Withdraw operation***********")
 w= int(input("How much do you want to withdraw from food category?\n"))
 food_category.withdraw(w)
 
-#**************transfer operation between objects***************#
-
-
-if carexpense_category. amount > 1000:
-    print("car expense must be less than 1000")
-    carexpense_category.transfer((carexpense_category.amount - 1000),education_category)
-elif carexpense_category. amount < 900:
-    carexpense_category.amount += 100
-
+print("**************transfer operation between objects***************")
+carexpense_category.transfer(carexpense_category,education_category)
 
